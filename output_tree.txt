@@ -1,0 +1,274 @@
+ROOT
+Level 0
+Feature Sex 1
+Gini 0.4724 
+ 
+INTERMEDIATE
+Level 1
+Feature Pclass 2 3
+Gini 0.3064 
+*****
+INTERMEDIATE
+Level 1
+Feature Pclass 1 2
+Gini 0.3844 
+ 
+INTERMEDIATE
+Level 2
+Feature Embarked 1 2
+Gini 0.2417 
+*****
+INTERMEDIATE
+Level 2
+Feature Embarked 1 2
+Gini 0.4656 
+*****
+INTERMEDIATE
+Level 2
+Feature Embarked 0 1
+Gini 0.1014 
+*****
+INTERMEDIATE
+Level 2
+Feature Embarked 0 1
+Gini 0.5 
+ 
+INTERMEDIATE
+Level 3
+Feature Embarked 2
+Gini 0.2252 
+*****
+INTERMEDIATE
+Level 3
+Feature Pclass 3
+Gini 0.3503 
+*****
+INTERMEDIATE
+Level 3
+Feature Embarked 2
+Gini 0.455 
+*****
+INTERMEDIATE
+Level 3
+Feature Pclass 3
+Gini 0.4819 
+*****
+INTERMEDIATE
+Level 3
+Feature Pclass 2
+Gini 0.037 
+*****
+INTERMEDIATE
+Level 3
+Feature Pclass 2
+Gini 0.1295 
+*****
+INTERMEDIATE
+Level 3
+Feature Embarked 1
+Gini 0.4228 
+*****
+INTERMEDIATE
+Level 3
+Feature Pclass 2
+Gini 0.4688 
+ 
+INTERMEDIATE
+Level 4
+Feature Pclass 3
+Gini 0.2341 
+*****
+INTERMEDIATE
+Level 4
+Feature Pclass 3
+Gini 0.1387 
+*****
+INTERMEDIATE
+Level 4
+Feature Embarked 2
+Gini 0.3569 
+*****
+INTERMEDIATE
+Level 4
+Feature Embarked 2
+Gini 0.32 
+*****
+INTERMEDIATE
+Level 4
+Feature Pclass 3
+Gini 0.4576 
+*****
+LEAF
+Level 4
+Class 0
+Gini 0.0 
+*****
+LEAF
+Level 4
+Class 1
+Gini 1 
+*****
+INTERMEDIATE
+Level 4
+Feature Embarked 2
+Gini 0.4819 
+*****
+LEAF
+Level 4
+Class 1
+Gini 0.0 
+*****
+INTERMEDIATE
+Level 4
+Feature Embarked 1
+Gini 0.0444 
+*****
+INTERMEDIATE
+Level 4
+Feature Embarked 1
+Gini 0.1631 
+*****
+INTERMEDIATE
+Level 4
+Feature Embarked 1
+Gini 0.0799 
+*****
+INTERMEDIATE
+Level 4
+Feature Pclass 2
+Gini 0.3967 
+*****
+INTERMEDIATE
+Level 4
+Feature Pclass 2
+Gini 0.4537 
+*****
+LEAF
+Level 4
+Class 1
+Gini 1 
+*****
+INTERMEDIATE
+Level 4
+Feature Embarked 1
+Gini 0.4688 
+ 
+LEAF
+Level 5
+Class 0
+Gini 0.2237 
+*****
+LEAF
+Level 5
+Class 0
+Gini 0.2615 
+*****
+LEAF
+Level 5
+Class 0
+Gini 0.142 
+*****
+LEAF
+Level 5
+Class 0
+Gini 0.0 
+*****
+LEAF
+Level 5
+Class 1
+Gini 1 
+*****
+LEAF
+Level 5
+Class 0
+Gini 0.3569 
+*****
+LEAF
+Level 5
+Class 1
+Gini 1 
+*****
+LEAF
+Level 5
+Class 0
+Gini 0.32 
+*****
+LEAF
+Level 5
+Class 1
+Gini 1 
+*****
+LEAF
+Level 5
+Class 0
+Gini 0.4576 
+*****
+LEAF
+Level 5
+Class 1
+Gini 1 
+*****
+LEAF
+Level 5
+Class 0
+Gini 0.4819 
+*****
+LEAF
+Level 5
+Class 1
+Gini 0.0 
+*****
+LEAF
+Level 5
+Class 1
+Gini 0.0454 
+*****
+LEAF
+Level 5
+Class 1
+Gini 1 
+*****
+LEAF
+Level 5
+Class 1
+Gini 0.1631 
+*****
+LEAF
+Level 5
+Class 1
+Gini 1 
+*****
+LEAF
+Level 5
+Class 1
+Gini 0.0799 
+*****
+LEAF
+Level 5
+Class 1
+Gini 1 
+*****
+LEAF
+Level 5
+Class 1
+Gini 0.3967 
+*****
+LEAF
+Level 5
+Class 1
+Gini 1 
+*****
+LEAF
+Level 5
+Class 1
+Gini 0.4537 
+*****
+LEAF
+Level 5
+Class 1
+Gini 1 
+*****
+LEAF
+Level 5
+Class 0
+Gini 0.4688 

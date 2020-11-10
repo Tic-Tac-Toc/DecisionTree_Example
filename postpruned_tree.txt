@@ -1,0 +1,34 @@
+ROOT
+Level 0
+Feature Sex 1
+Gini 0.4724 
+ 
+LEAF
+Level 1
+Class 0
+Gini 0.3064 
+*****
+INTERMEDIATE
+Level 1
+Feature Pclass 1 2
+Gini 0.3844 
+ 
+LEAF
+Level 2
+Class 1
+Gini 0.1014 
+*****
+INTERMEDIATE
+Level 2
+Feature Embarked 0 1
+Gini 0.5 
+ 
+LEAF
+Level 3
+Class 1
+Gini 0.4228 
+*****
+LEAF
+Level 3
+Class 0
+Gini 0.4688 
