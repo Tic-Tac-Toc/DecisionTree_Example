@@ -1,2 +1,2 @@
-Generalization error before prunning with normalization : 0.2047 
+Generalization error before prunning with normalization : 0.1985 
 Generalization error after prunning with normalization : 0.1912

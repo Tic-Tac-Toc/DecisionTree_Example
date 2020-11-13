@@ -58,16 +58,20 @@ class NodeFeature:
 
 
 class Node:
-    def __init__(self, datas, level, parent):
+    def __init__(self, datas, level, parent=None, yesNode=True):
         self.NodeType = 1
         self.NodeDatas = datas
         self.NodeLevel = level
         self.NodeFeature = -1
-        # If the node is not the root node, update attributes according to parent node selection.
+        # If the node is not the root node, update attributes according to parent node selection (useless to select again the same attribute and possibilities because the datas on the node are already selected by this attribute and possibilities if parent node split datas with sex 0, useless to split data again with sex 0 because it's already the case, it will cause an infinite loop).
         if parent != None:
             self.NodeAttributes = parent.NodeAttributes.copy()
-            self.NodeAttributes[parent.NodeFeature.attr] = [
-                x for x in self.NodeAttributes[parent.NodeFeature.attr] if x in parent.NodeFeature.possibilities]
+            if yesNode:
+                self.NodeAttributes[parent.NodeFeature.attr] = [
+                    x for x in self.NodeAttributes[parent.NodeFeature.attr] if x in parent.NodeFeature.possibilities]
+            else:
+                self.NodeAttributes[parent.NodeFeature.attr] = [
+                    x for x in self.NodeAttributes[parent.NodeFeature.attr] if x not in parent.NodeFeature.possibilities]
         self.NodeGini = getGini(datas)
         self.ChildrenNodes = {}
         self.Parent = parent
@@ -179,7 +183,7 @@ def GetBestFeature(CurrentNode):
         for i, v in enumerate(CurrentNode.NodeAttributes[attr]):
             gte, gt, lte, lt = CurrentNode.NodeAttributes[attr][max(i, 0):], CurrentNode.NodeAttributes[attr][max(i+1, 0):], CurrentNode.NodeAttributes[attr][:min(
                 i + 1, len(CurrentNode.NodeAttributes[attr]) - 1)], CurrentNode.NodeAttributes[attr][:min(i, len(CurrentNode.NodeAttributes[attr]) - 1)]
-            
+
             for elm in [gte, gt, lte, lt]:
                 # Keep only the features that are useful in our case (avoid also redundancy)
                 if elm not in possible_features and len(elm) > 0 and len(elm) != len(CurrentNode.NodeAttributes[attr]) and len(elm) != len(CurrentNode.NodeAttributes[attr]) - 2:
@@ -195,25 +199,26 @@ def GetBestFeature(CurrentNode):
     return best_feature, min_splitgit
 
 
-def BuildDecisionTree(Datas, Attributes, minNum, defaultClass=1):
+def BuildDecisionTree(Datas, Attributes, minNum):
     rootNode = Node(Datas, 0, None)
-    rootNode.SetAttributes(Attributes) #For the root node, we can apply feature selection on base attributes
+    # For the root node, we can apply feature selection on base attributes
+    rootNode.SetAttributes(Attributes)
     Tree = DecisionTree()
-    Build(Datas, minNum, rootNode, defaultClass, Tree)
+    Build(Datas, minNum, rootNode, Tree)
 
     return Tree
 
 
-def Build(Datas, minNum, node, defaultClass, tree):
+def Build(Datas, minNum, node, tree):
     tree.AddNode(node)
 
-    if node.NodeGini == 0: #All datas belongs to the same class.
+    if node.NodeGini == 0:  # All datas belongs to the same class.
         node.SetLeaf(Datas["Survived"].iloc[0])
         tree.IncreaseComplexity()
         return
 
     if Datas["Survived"].count() <= minNum:
-        node.SetLeaf(defaultClass)
+        node.SetLeaf(getMajorityClass(node.NodeDatas)) #I deciced to use majority vote to set a class to a node (not default class).
         tree.IncreaseComplexity()
         return
 
@@ -225,13 +230,22 @@ def Build(Datas, minNum, node, defaultClass, tree):
         tree.IncreaseComplexity()
         return
 
+    # if node.Parent != None:
+    #     print(node.NodeLevel, node.NodeAttributes, " Parent ",
+    #                   node.Parent.NodeLevel, node.Parent.NodeAttributes)
+    # else:
+    #     print(node.NodeLevel, node.NodeAttributes)
+    # input()
+
     node.SetFeature(best_feature)
     d1, d2 = getDataSplitByFeatures(best_feature, node.NodeDatas)
     D = [d1, d2]
     for i, d in enumerate(D):
-        new_node = Node(d, node.NodeLevel + 1, node) #Create new node from feature selection of current node
+        # Create new node from feature selection of current node (i == 0 is the condition to know if the node verify parent selection feature : yes edge).
+        new_node = Node(d, node.NodeLevel + 1, node, i == 0)
         node.AddChildrenNode(new_node, i == 0)
-        Build(d, minNum, new_node, defaultClass, tree) #Build recursively the tree
+        # Build recursively the tree
+        Build(d, minNum, new_node, tree)
 
 
 def printDecisionTree(Tree):
@@ -262,7 +276,7 @@ def generalizationError(Datas, Tree, alpha, normalize=False, debug_print=False):
     return error
 
 
-def pruneTree(Tree, alpha, minNum, defaultClass=1):
+def pruneTree(Tree, alpha, minNum):
     total_datas = Tree.Layers[0][0].NodeDatas
     max_level = Tree.GetMaxLevel()
     for l in range(max_level - 1, -1, -1):
@@ -273,18 +287,15 @@ def pruneTree(Tree, alpha, minNum, defaultClass=1):
             Subtree = copy.deepcopy(Tree)
             Subtree.Layers[l][i].ChildrenNodes = {}
 
-            #Transform the intermediary node into leaf node.
-            if Subtree.Layers[l][i].NodeDatas["Survived"].count() <= minNum:
-                Subtree.Layers[l][i].SetLeaf(defaultClass)
-            else:
-                # If there is only one class, this line will also select the only class which is represent.
-                Subtree.Layers[l][i].SetLeaf(
-                    getMajorityClass(Subtree.Layers[l][i].NodeDatas))
+            # Transform the intermediary node into leaf node.
+            # If there is only one class, this line will also select the only class which is represent.
+            Subtree.Layers[l][i].SetLeaf(
+                getMajorityClass(Subtree.Layers[l][i].NodeDatas))
 
             Subtree.CleanTree()
             Subtree.UpdateComplexity()
 
-            #If the Subtree is better than the original Tree, switch them (lower error for the Subtree)
+            # If the Subtree is better than the original Tree, switch them (lower error for the Subtree)
             if generalizationError(total_datas, Tree, alpha, True) > generalizationError(total_datas, Subtree, alpha, True):
                 Tree = Subtree
 

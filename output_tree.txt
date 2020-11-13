@@ -48,9 +48,9 @@ Level 3
 Feature Embarked 2
 Gini 0.455 
 *****
-INTERMEDIATE
+LEAF
 Level 3
-Feature Pclass 3
+Class 0
 Gini 0.4819 
 *****
 INTERMEDIATE
@@ -68,9 +68,9 @@ Level 3
 Feature Embarked 1
 Gini 0.4228 
 *****
-INTERMEDIATE
+LEAF
 Level 3
-Feature Pclass 2
+Class 0
 Gini 0.4688 
  
 INTERMEDIATE
@@ -83,35 +83,25 @@ Level 4
 Feature Pclass 3
 Gini 0.1387 
 *****
-INTERMEDIATE
+LEAF
 Level 4
-Feature Embarked 2
+Class 0
 Gini 0.3569 
 *****
-INTERMEDIATE
+LEAF
 Level 4
-Feature Embarked 2
+Class 0
 Gini 0.32 
 *****
-INTERMEDIATE
+LEAF
 Level 4
-Feature Pclass 3
+Class 0
 Gini 0.4576 
 *****
 LEAF
 Level 4
 Class 0
 Gini 0.0 
-*****
-LEAF
-Level 4
-Class 1
-Gini 1 
-*****
-INTERMEDIATE
-Level 4
-Feature Embarked 2
-Gini 0.4819 
 *****
 LEAF
 Level 4
@@ -123,35 +113,25 @@ Level 4
 Feature Embarked 1
 Gini 0.0444 
 *****
-INTERMEDIATE
+LEAF
 Level 4
-Feature Embarked 1
+Class 1
 Gini 0.1631 
-*****
-INTERMEDIATE
-Level 4
-Feature Embarked 1
-Gini 0.0799 
-*****
-INTERMEDIATE
-Level 4
-Feature Pclass 2
-Gini 0.3967 
-*****
-INTERMEDIATE
-Level 4
-Feature Pclass 2
-Gini 0.4537 
 *****
 LEAF
 Level 4
 Class 1
-Gini 1 
+Gini 0.0799 
 *****
-INTERMEDIATE
+LEAF
 Level 4
-Feature Embarked 1
-Gini 0.4688 
+Class 1
+Gini 0.3967 
+*****
+LEAF
+Level 4
+Class 1
+Gini 0.4537 
  
 LEAF
 Level 5
@@ -176,99 +156,9 @@ Gini 0.0
 LEAF
 Level 5
 Class 1
-Gini 1 
-*****
-LEAF
-Level 5
-Class 0
-Gini 0.3569 
-*****
-LEAF
-Level 5
-Class 1
-Gini 1 
-*****
-LEAF
-Level 5
-Class 0
-Gini 0.32 
-*****
-LEAF
-Level 5
-Class 1
-Gini 1 
-*****
-LEAF
-Level 5
-Class 0
-Gini 0.4576 
-*****
-LEAF
-Level 5
-Class 1
-Gini 1 
-*****
-LEAF
-Level 5
-Class 0
-Gini 0.4819 
-*****
-LEAF
-Level 5
-Class 1
 Gini 0.0 
 *****
 LEAF
 Level 5
 Class 1
 Gini 0.0454 
-*****
-LEAF
-Level 5
-Class 1
-Gini 1 
-*****
-LEAF
-Level 5
-Class 1
-Gini 0.1631 
-*****
-LEAF
-Level 5
-Class 1
-Gini 1 
-*****
-LEAF
-Level 5
-Class 1
-Gini 0.0799 
-*****
-LEAF
-Level 5
-Class 1
-Gini 1 
-*****
-LEAF
-Level 5
-Class 1
-Gini 0.3967 
-*****
-LEAF
-Level 5
-Class 1
-Gini 1 
-*****
-LEAF
-Level 5
-Class 1
-Gini 0.4537 
-*****
-LEAF
-Level 5
-Class 1
-Gini 1 
-*****
-LEAF
-Level 5
-Class 0
-Gini 0.4688 
